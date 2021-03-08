@@ -212,6 +212,7 @@ first: function(collection, stop=false) {
             }
         }
 
+        return functionNames.sort()
 
     },
 
