@@ -38,11 +38,79 @@ const fi = (function() {
             return acc;
 ,
 
-    map: function() {
+find: function(arr, finderFn) {
+  let newArr = (arr instanceof Array) ? arr.slice() : Object.values(arr);
+  for (let i = 0; i < newArr.length; i++) {
+    if (finderFn(newArr[i])) {
+      return newArr[i]
+    }
+  }
+},
+
+filter: function(arr, excluder) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (excluder(arr[i])) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+},
+
+size: function(thing) {
+  if (thing instanceof Array) {
+    return thing.length;
+  }
+  return Object.keys(thing).length;
 
     },
 
-    reduce: function() {
+    first: function(arr, arg) {
+         let newArr = [];
+         if (arg) {
+           for (let i = 0; i < arg; i++) {
+             newArr.push(arr[i]);
+           }
+         return newArr;
+         }
+         else {
+           return arr[0];
+         }
+       },
+
+       last: function(arr, arg) {
+         let newArr = [];
+         if (arg) {
+           for (let i = 0; i < arg; i++) {
+             newArr.unshift(arr[arr.length - 1 - i]);
+           }
+         return newArr;
+         }
+         else {
+           return arr[arr.length - 1];
+         }
+       },
+
+       compact: function(arr) {
+         let newArr = [];
+         for (let i = 0; i < arr.length; i++) {
+           if (arr[i]) {
+             newArr.push(arr[i]);
+           }
+         }
+         return newArr;
+       },
+       sortBy: function(collection, callback) {
+           const newArr = [...collection];
+           return newArr.sort(function (a, b) {
+             return callback(a) - callback(b)
+           })
+          },
+
+          unpack: function(receiver, arr) {
+             for (let val of arr)
+               receiver.push(val)
+
 
     },
 
