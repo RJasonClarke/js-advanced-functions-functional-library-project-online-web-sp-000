@@ -36,7 +36,7 @@ const fi = (function() {
 
           }
             return acc;
-,
+
 
 find: function(arr, finderFn) {
   let newArr = (arr instanceof Array) ? arr.slice() : Object.values(arr);
