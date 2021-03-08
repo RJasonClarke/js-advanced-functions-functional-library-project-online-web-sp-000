@@ -102,7 +102,29 @@ first: function(collection, stop=false) {
 
     },
 
-    map: function() {
+    last: function(collection, start=false) {
+        return (start) ? collection.slice(collection.length-start, collection.length) : collection[collection.length-1]
+    },
+
+    compact: function(collection) {
+        const notGood = new Set([false, null, 0, "", undefined, NaN])
+
+        return collection.filter(e => !notGood.has(e))
+    },
+
+    sortBy: function(collection, callback) {
+        const newArray = [...collection];
+
+        return newArray.sort(function(a, b) {
+            return callback(a) - callback(b)
+        })
+    },
+
+    unpack: function(receiver, array) {
+        for (let value of array) {
+            receiver.push(value);
+        }
+
 
     },
 
