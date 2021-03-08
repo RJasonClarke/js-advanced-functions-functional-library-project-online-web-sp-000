@@ -162,6 +162,14 @@ size: function(thing) {
       }
       return arr;
     },
+    functions: function (obj) {
+          let arr = [];
+          for (let el in obj) {
+            if (typeof obj[el] === "function")
+              arr.push(el)
+          }
+          return arr
+        }
 
 
 
