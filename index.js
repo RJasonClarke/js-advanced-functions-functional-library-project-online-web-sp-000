@@ -147,6 +147,22 @@ size: function(thing) {
 
 
     },
+    keys: function(test) {
+      let arr = []
+      for (let key in test) {
+        arr.push(key)
+      }
+      return arr;
+    },
+
+    values: function(test) {
+      let arr = []
+      for (let value in test) {
+        arr.push(test[value])
+      }
+      return arr;
+    },
+
 
 
   }
